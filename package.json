@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "git:commit": "git status&& git add .&& git status&& git commit -m \"Actualización_01\"&& git push https://github.com/SuGueVar30/sland-web.git",
+    "git:commit": "git status&& git add .&& git status&& git commit -m \"Actualización_02\"&& git push https://github.com/SuGueVar30/sland-web.git",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
