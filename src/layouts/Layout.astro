@@ -8,10 +8,11 @@ interface Props {
 }
 
 const { title, description } = Astro.props
+const { currentLocale } = Astro
 ---
 
 <!doctype html>
-<html lang="en-es">
+<html lang={currentLocale}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -48,5 +49,51 @@ const { title, description } = Astro.props
 	p strong {
 		color: white;
 		font-weight: 700;
+	}
+
+	.lite-youtube-fallback {
+		aspect-ratio: 16 / 9; /* matches YouTube player */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 1em;
+		padding: 1em;
+		background-color: #000;
+		color: #fff;
+		text-decoration: none;
+	}
+
+	/* right-facing triangle "Play" icon */
+	.lite-youtube-fallback::before {
+		display: block;
+		content: '';
+		border: solid transparent;
+		border-width: 2em 0 2em 3em;
+		border-left-color: red;
+	}
+
+	.lite-youtube-fallback:hover::before {
+		border-left-color: #fff;
+	}
+
+	.lite-youtube-fallback:focus {
+		outline: 2px solid red;
+	}
+
+	#header-nav {
+		animation: blur linear both;
+		animation-timeline: scroll();
+		animation-range: 0 500px;
+	}
+
+	@keyframes blur {
+		to {
+			box-shadow:
+				0px 5px 50px -5px hsl(0, 0%, 100%, 0.1),
+				0px 0px 0px 1px hsl(0, 0%, 100%, 0.1);
+			background: rgba(0, 0, 0, 0.3);
+			backdrop-filter: blur(10px);
+		}
 	}
 </style>
